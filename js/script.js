@@ -18,3 +18,7 @@ function addBookToLibrary() {
     myLibrary.push(new Book(title, author, pages)); // Create book and add to library
 }
 
+// Example calls to test the functionality
+addBookToLibrary();
+addBookToLibrary();
+addBookToLibrary();
