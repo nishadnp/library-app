@@ -15,11 +15,19 @@ function addBookToLibrary() {
     const author = prompt("Author: ");
     const pages = prompt("Total Pages: ");
     
-    myLibrary.push(new Book(title, author, pages)); // Create book and add to library
+    // Create book and add to library
+    myLibrary.push(new Book(title, author, pages)); 
 }
 
 // Function to render all the books in library on the page
 function renderLibrary() {
+
+    const main = document.getElementById('main')
+
+    // Clear the existing books
+    main.innerHTML = '';
+
+    // Render books from myLibrary[]
     for (let book of myLibrary) {
 
         // Create a container element for the book
@@ -40,14 +48,14 @@ function renderLibrary() {
         theBook.appendChild(bookAuthor);
         theBook.appendChild(bookPages);
 
-        // Append the book container to the body
-        document.body.appendChild(theBook);
+        // Append the book container to the main section of the body
+        main.appendChild(theBook);
     }
 }
 
-// Example calls to test the functionality
-addBookToLibrary();
-addBookToLibrary();
-addBookToLibrary();
-
-renderLibrary();
+// Listen for clicks on the 'New Book' button
+const newBookButton = document.getElementById('new-book');
+newBookButton.addEventListener('click', () => {
+    addBookToLibrary(); // Collect book data from the user
+    renderLibrary();    // Update the DOM to show all books
+});
