@@ -54,7 +54,7 @@ function renderLibrary() {
 }
 
 // Listen for clicks on the 'New Book' button
-const newBookButton = document.getElementById('new-book');
+const newBookButton = document.getElementById('new-book-btn');
 newBookButton.addEventListener('click', () => {
     addBookToLibrary(); // Collect book data from the user
     renderLibrary();    // Update the DOM to show all books
