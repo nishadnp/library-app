@@ -9,6 +9,22 @@
 </head>
 <body>
     <button type="button" id="new-book-btn">New Book</button>
-    <main id="main"></main>
+    <dialog>
+            <h3>New Book Details</h3>
+            <form id="get-book-details" method="dialog">
+                <label for="book-title">Title 
+                    <input type="text" name="book-title" id="book-title" required>
+                </label>
+                <label for="book-author">Author 
+                    <input type="text" name="book-author" id="book-author" required>
+                </label>
+                <label for="book-total-pages">Total Pages 
+                    <input type="number" name="book-total-pages" id="book-total-pages" required>
+                </label>
+                <button id="form-submit">Enter</button>
+            </form>
+        </dialog>
+    <main id="main">
+    </main>
 </body>
 </html>

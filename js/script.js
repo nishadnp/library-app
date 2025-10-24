@@ -9,13 +9,9 @@ function Book(title, author, pages) {
     this.pages = pages;
 }
 
-// Function to prompt user for book details and add it to the library
-function addBookToLibrary() {
-    const title = prompt("Title: ");
-    const author = prompt("Author: ");
-    const pages = prompt("Total Pages: ");
-    
-    // Create book and add to library
+// Function to add the book to the library
+function addBookToLibrary(title, author, pages) {   
+
     myLibrary.push(new Book(title, author, pages)); 
 }
 
@@ -55,7 +51,30 @@ function renderLibrary() {
 
 // Listen for clicks on the 'New Book' button
 const newBookButton = document.getElementById('new-book-btn');
-newBookButton.addEventListener('click', () => {
-    addBookToLibrary(); // Collect book data from the user
-    renderLibrary();    // Update the DOM to show all books
+
+// Show the dialog when the button is clicked
+const dialog = document.querySelector('dialog');
+newBookButton.addEventListener('click', () => dialog.showModal());
+
+// Select the form inside the dialog
+const bookForm = document.getElementById('get-book-details');
+
+// Listen for form submission
+bookForm.addEventListener('submit', e => {
+    e.preventDefault(); // Prevent default page reload on submit
+
+    // Collect input values from the form
+    const bookTitle = document.getElementById('book-title').value;
+    const bookAuthor = document.getElementById('book-author').value;
+    const bookPages = document.getElementById('book-total-pages').value;
+
+    // Add new book to the library
+    addBookToLibrary(bookTitle, bookAuthor, bookPages);
+
+    // Reset form fields and close dialog
+    bookForm.reset();
+    dialog.close();
+
+    // Render the updated library
+    renderLibrary();
 });
