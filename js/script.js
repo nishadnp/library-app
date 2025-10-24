@@ -33,17 +33,27 @@ function renderLibrary() {
         // Create a container element for the book
         const theBook = document.createElement('article');
 
+        // Set data-id as unique ID of the book
+        theBook.dataset.id = book.id;
+
+        // Create a remove button
+        const removeBookButton = document.createElement('button');
+        removeBookButton.type = "button";
+        removeBookButton.classList.add('remove-book-btn');
+
         // Create elements to display the book details
         const bookTitle = document.createElement('p');
         const bookAuthor = document.createElement('p');
         const bookPages = document.createElement('p');
 
         // Set text content for each element
+        removeBookButton.textContent = 'X';
         bookTitle.textContent = `Title: ${book.title}`;
         bookAuthor.textContent = `Author: ${book.author}`;
         bookPages.textContent = `Pages: ${book.pages}`;
 
-        // Append the details to the book container
+        // Append the remove button and details to the book container
+        theBook.appendChild(removeBookButton);
         theBook.appendChild(bookTitle);
         theBook.appendChild(bookAuthor);
         theBook.appendChild(bookPages);
@@ -51,6 +61,19 @@ function renderLibrary() {
         // Append the book container to the main section of the body
         main.appendChild(theBook);
     }
+}
+
+// Function to remove the book from the library
+function removeBook(uniqueID) {
+    
+    // Find the index of the book that matches given unique ID
+    const bookIndex = myLibrary.findIndex(book => book.id === uniqueID);
+
+    // If found, remove the book and render the newly updated library
+    if (bookIndex !== -1) {
+        myLibrary.splice(bookIndex, 1);
+        renderLibrary();
+    } 
 }
 
 // Listen for clicks on the 'New Book' button
@@ -80,4 +103,15 @@ bookForm.addEventListener('submit', e => {
     dialog.close();
 
     renderLibrary();    // Render the updated library
+});
+
+// Use event delegation to handle clicks on dynamically created "Remove" buttons
+document.body.addEventListener('click', e => {
+    // Check if the clicked button is a remove button
+    if (e.target.classList.contains('remove-book-btn')) {
+        // Get the book's unique ID from its parent element
+        const bookId = e.target.parentElement.dataset.id;
+        // Remove the corresponding book from the library
+        removeBook(bookId);
+    }
 });
