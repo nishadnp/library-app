@@ -3,7 +3,8 @@
 const myLibrary = [];
 
 // Constructor function to create a Book object
-function Book(title, author, pages) {
+function Book(id, title, author, pages) {
+    this.id = id;
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -12,7 +13,10 @@ function Book(title, author, pages) {
 // Function to add the book to the library
 function addBookToLibrary(title, author, pages) {   
 
-    myLibrary.push(new Book(title, author, pages)); 
+    // Generate a unique ID for the new book (used for tracking/removal)
+    const id = crypto.randomUUID();
+
+    myLibrary.push(new Book(id, title, author, pages)); 
 }
 
 // Function to render all the books in library on the page
@@ -75,6 +79,5 @@ bookForm.addEventListener('submit', e => {
     bookForm.reset();
     dialog.close();
 
-    // Render the updated library
-    renderLibrary();
+    renderLibrary();    // Render the updated library
 });
