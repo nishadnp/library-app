@@ -22,6 +22,7 @@ header {
     position: relative;
     margin-top: 0;
     padding: 10px;
+    margin-bottom: 30px;
 }
 
 h1 {
@@ -41,4 +42,11 @@ h1 {
    background-color: #03b103;
    color: #ffffff;
    
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    justify-items: center;
 }
