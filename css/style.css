@@ -73,6 +73,19 @@ article p {
     margin-right: 5px; 
 }
 
+.remove-book-btn {
+    border: none;
+    border-radius: 10px;
+    background-color: #bb2d2d;
+    color: #ffffff;
+    align-self: flex-end;
+}
+
 article:hover {
     transform: scale(1.1);
+}
+
+.remove-book-btn:hover {
+    background-color: #9e1f1f;
+    cursor: pointer;
 }
