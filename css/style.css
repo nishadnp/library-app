@@ -63,3 +63,7 @@ article {
 article p {
     font-size: 1.1rem;
 }
+
+article:hover {
+    transform: scale(1.1);
+}
