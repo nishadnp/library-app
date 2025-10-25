@@ -47,25 +47,30 @@ function renderLibrary() {
         const removeBookButton = document.createElement('button');
         removeBookButton.type = "button";
         removeBookButton.classList.add('remove-book-btn');
+        removeBookButton.textContent = 'X';
 
         // Create elements to display the book details
         const bookTitle = document.createElement('p');
         const bookAuthor = document.createElement('p');
         const bookPages = document.createElement('p');
 
-        // Set text content for each element
-        removeBookButton.textContent = 'X';
-        bookTitle.textContent = `Title: ${book.title}`;
-        bookAuthor.textContent = `Author: ${book.author}`;
-        bookPages.textContent = `Pages: ${book.pages}`;
+        // Helper function to create and return a label span
+        const makeLabel = labelText => {
+            const labelSpan = document.createElement('span');
+            labelSpan.classList.add('book-label');
+            labelSpan.textContent = labelText;
+            return labelSpan;
+        }
 
-        // Append the remove button and details to the book container
-        theBook.appendChild(removeBookButton);
-        theBook.appendChild(bookTitle);
-        theBook.appendChild(bookAuthor);
-        theBook.appendChild(bookPages);
+        // Append labels and text content
+        bookTitle.append(makeLabel('Title:'), ` ${book.title}`);
+        bookAuthor.append(makeLabel('Author:'), ` ${book.author}`);
+        bookPages.append(makeLabel('Pages:'), ` ${book.pages}`);
 
-        // Append the book container to the main section of the body
+        // Append all elements to the book container
+        theBook.append(removeBookButton, bookTitle, bookAuthor, bookPages);
+
+        // Append the book container to the main section
         main.appendChild(theBook);
     }
 }

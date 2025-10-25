@@ -40,7 +40,7 @@ h1 {
    font-weight: 700;
    background-color: #03b103;
    color: #ffffff;
-   
+   border: none;
 }
 
 main {
@@ -62,6 +62,12 @@ article {
 
 article p {
     font-size: 1.1rem;
+}
+
+.book-label {
+    font-weight: 700;
+    color: #333333;
+    margin-right: 5px; 
 }
 
 article:hover {
