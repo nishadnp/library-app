@@ -13,4 +13,25 @@ body {
     background-image: url('../assets/images/library-bg_image.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: 50%;
+    min-height: 100vh;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: relative;
+    margin-top: 0;
+    padding: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+    font-size: 3rem;
+}
+
+#new-book-btn {
+   margin-right: 0;
+   position: relative;
+   left: 90%;
 }
