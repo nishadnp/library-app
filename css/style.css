@@ -33,5 +33,12 @@ h1 {
 #new-book-btn {
    margin-right: 0;
    position: relative;
-   left: 90%;
+   left: 85%;
+   padding: 10px;
+   border-radius: 25px;
+   font-size: 1.2rem;
+   font-weight: 700;
+   background-color: #03b103;
+   color: #ffffff;
+   
 }
