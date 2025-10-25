@@ -47,7 +47,7 @@ function renderLibrary() {
         const removeBookButton = document.createElement('button');
         removeBookButton.type = "button";
         removeBookButton.classList.add('remove-book-btn');
-        removeBookButton.textContent = 'X';
+        removeBookButton.textContent = '✕';
 
         // Create elements to display the book details
         const bookTitle = document.createElement('p');
