@@ -8,3 +8,9 @@ html, body {
     font-family: inherit;
     line-height: 1.5;
 }
+
+body {
+    background-image: url('../assets/images/library-bg_image.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
