@@ -81,6 +81,18 @@ article p {
     align-self: flex-end;
 }
 
+.read-book-btn {
+    border: none;               
+    border-radius: 10px;        
+    background-color: #2d7bbb; 
+    color: #ffffff;             
+    align-self: center;       
+    padding: 6px 12px;        
+    font-weight: bold;        
+    transition: background-color 0.2s ease;
+
+}
+
 article:hover {
     transform: scale(1.1);
 }
@@ -88,4 +100,9 @@ article:hover {
 .remove-book-btn:hover {
     background-color: #9e1f1f;
     cursor: pointer;
+}
+
+.read-book-btn:hover {
+    background-color: #1f5f91; 
+    cursor: pointer; 
 }
