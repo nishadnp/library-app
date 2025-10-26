@@ -45,9 +45,15 @@ function renderLibrary() {
 
         // Create a remove button
         const removeBookButton = document.createElement('button');
-        removeBookButton.type = "button";
+        removeBookButton.type = 'button';
         removeBookButton.classList.add('remove-book-btn');
-        removeBookButton.textContent = '✕';
+        removeBookButton.textContent = "✕";
+
+        // Create a read button
+        const readBookButton = document.createElement('button');
+        readBookButton.type = 'button';
+        readBookButton.classList.add('read-book-btn');
+        readBookButton.textContent = "Read";
 
         // Create elements to display the book details
         const bookTitle = document.createElement('p');
@@ -68,7 +74,7 @@ function renderLibrary() {
         bookPages.append(makeLabel('Pages:'), ` ${book.pages}`);
 
         // Append all elements to the book container
-        theBook.append(removeBookButton, bookTitle, bookAuthor, bookPages);
+        theBook.append(removeBookButton, bookTitle, bookAuthor, bookPages, readBookButton);
 
         // Append the book container to the main section
         main.appendChild(theBook);
