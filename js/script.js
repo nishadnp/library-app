@@ -123,6 +123,13 @@ bookForm.addEventListener('submit', e => {
     renderLibrary();    // Render the updated library
 });
 
+// Listen for the book form cancellation
+const formCancelButton = document.getElementById('form-cancel-btn');
+formCancelButton.addEventListener('click', () => {
+    bookForm.reset();
+    dialog.close();
+});
+
 // Use event delegation to handle clicks on dynamically created "Remove" buttons
 document.body.addEventListener('click', e => {
     // Check if the clicked button is a remove button
