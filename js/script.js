@@ -1,13 +1,21 @@
 
-// Array to store all books in the library (includes sample books)
+// Array to store all book objects in the library (includes sample books)
 const myLibrary = [{id: '0b875c72-b8dc-4bfc-852f-5c145ddd6919', 
-    title: 'Atomic Habits', author: 'James Clear', pages: '320'}, 
+    title: 'Atomic Habits', 
+    author: 'James Clear', 
+    pages: '320'}, 
     {id: '9b4d4233-4654-45a7-8fc0-8a5eb982c455', 
-    title: 'Harry Porter', author: 'J.K. Rowling', pages: '4100'}, 
+    title: 'Harry Porter', 
+    author: 'J.K. Rowling', 
+    pages: '4100'}, 
     {id: '70989918-0747-482d-8502-7b7060de964c', 
-    title: 'The Arabian Nights', author: 'Various Authors', pages: '2700'},
+    title: 'The Arabian Nights', 
+    author: 'Various Authors', 
+    pages: '2700'},
     {id: '78cd9366-43b5-4259-8931-d93bbac84884', 
-    title: 'The Chronicles of Narnia', author: 'C.S. Lewis', pages: '1625'}];
+    title: 'The Chronicles of Narnia', 
+    author: 'C.S. Lewis', 
+    pages: '1625'}];
 
 // Constructor function to create a Book object
 function Book(id, title, author, pages) {
@@ -151,3 +159,6 @@ document.body.addEventListener('click', e => {
         removeBook(bookId);
     }
 });
+
+// Initial render of library on page load
+renderLibrary();
