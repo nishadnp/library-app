@@ -94,40 +94,45 @@ function removeBook(uniqueID) {
     } 
 }
 
-// Listen for clicks on the 'New Book' button
 const newBookButton = document.getElementById('new-book-btn');
-
-// Show the dialog when the button is clicked
 const dialog = document.querySelector('dialog');
+
+// Show the dialog when the 'New Book' button is clicked
 newBookButton.addEventListener('click', () => dialog.showModal());
 
-// Select the form inside the dialog
-const bookForm = document.getElementById('get-book-details');
+// Handle form button clicks within the dialog
+dialog.addEventListener('click', e => {
 
-// Listen for form submission
-bookForm.addEventListener('submit', e => {
-    e.preventDefault(); // Prevent default page reload on submit
+    // Select the form inside the dialog
+    const bookForm = document.getElementById('get-book-details');
 
-    // Collect input values from the form
-    const bookTitle = document.getElementById('book-title').value;
-    const bookAuthor = document.getElementById('book-author').value;
-    const bookPages = document.getElementById('book-total-pages').value;
+    // If the 'Submit' button is clicked, 
+    if (e.target.id === 'form-submit-btn') {
 
-    // Add new book to the library
-    addBookToLibrary(bookTitle, bookAuthor, bookPages);
+        e.preventDefault(); // Prevent default form submission (page reload)
 
-    // Reset form fields and close dialog
-    bookForm.reset();
-    dialog.close();
+        // Retrieve input values from the form fields
+        const bookTitle = document.getElementById('book-title').value;
+        const bookAuthor = document.getElementById('book-author').value;
+        const bookPages = document.getElementById('book-total-pages').value;
 
-    renderLibrary();    // Render the updated library
-});
+        // Add new book to the library
+        addBookToLibrary(bookTitle, bookAuthor, bookPages);
 
-// Listen for the book form cancellation
-const formCancelButton = document.getElementById('form-cancel-btn');
-formCancelButton.addEventListener('click', () => {
-    bookForm.reset();
-    dialog.close();
+        // Reset form fields and close the dialog after adding the book
+        bookForm.reset();
+        dialog.close();
+
+        // Re-render the library to include newly added book
+        renderLibrary();
+    }
+
+    // If the 'Cancel' button is clicked, 
+    if (e.target.id === 'form-cancel-btn') {
+        // Clear the form inputs and close the dialog without saving
+        bookForm.reset();
+        dialog.close();
+    }
 });
 
 // Use event delegation to handle clicks on dynamically created "Remove" buttons
