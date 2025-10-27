@@ -111,6 +111,12 @@ dialog.addEventListener('click', e => {
 
         e.preventDefault(); // Prevent default form submission (page reload)
 
+        // Run built-in HTML5 validation manually
+        if (!bookForm.checkValidity()) {
+            bookForm.reportValidity();
+            return; // stop here validation fails
+        }
+
         // Retrieve input values from the form fields
         const bookTitle = document.getElementById('book-title').value;
         const bookAuthor = document.getElementById('book-author').value;
