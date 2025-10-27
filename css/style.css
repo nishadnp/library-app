@@ -32,15 +32,32 @@ h1 {
 }
 
 #new-book-btn {
-   position: relative;
-   left: 85%;
-   padding: 10px;
-   border-radius: 25px;
-   font-size: 1.2rem;
-   font-weight: 700;
-   background-color: #03b103;
-   color: #ffffff;
-   border: none;
+  position: relative;
+  left: 85%;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background-color: #2ecc71;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 8px rgba(46, 204, 113, 0.3);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  letter-spacing: 0.3px;
+}
+
+#new-book-btn:hover {
+  background-color: #27ae60;
+  box-shadow: 0 6px 12px rgba(39, 174, 96, 0.35);
+  transform: translateY(-2px);
+}
+
+#new-book-btn:active {
+  background-color: #219150;
+  transform: translateY(1px);
+  box-shadow: 0 2px 5px rgba(39, 174, 96, 0.4);
 }
 
 dialog {
