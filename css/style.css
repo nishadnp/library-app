@@ -99,12 +99,23 @@ input[type="checkbox"] {
     accent-color: #2d7bbb; /* matches your toggle button */
 }
 
-#form-submit {
-    align-self: center;
+.form-btn-group {
+    display: flex;
+    justify-content: space-around;
+}
+
+#form-submit-btn {
+    background-color: #2d7bbb;
+}
+
+#form-cancel-btn {
+    background-color: #bb2d2d;
+}
+
+#form-submit-btn, #form-cancel-btn {
+    color: #ffffff;
     margin-top: 1rem;
     padding: 0.6rem 1rem;
-    background-color: #2d7bbb;
-    color: #fff;
     border: none;
     border-radius: 10px;
     font-size: 1.1rem;
@@ -113,8 +124,12 @@ input[type="checkbox"] {
     transition: background-color 0.2s ease;
 }
 
-#form-submit:hover {
+#form-submit-btn:hover {
     background-color: #1f5f91;
+}
+
+#form-cancel-btn:hover {
+    background-color:  #9e1f1f;
 }
 
 main {
