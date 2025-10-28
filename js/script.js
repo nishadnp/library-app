@@ -66,8 +66,17 @@ function renderLibrary() {
         const readBookButton = document.createElement('button');
         readBookButton.type = 'button';
         readBookButton.classList.add('read-book-btn');
-        readBookButton.textContent = "Read";
-
+        
+        // Change the read button color according to book read status
+        if (book.readStatus) { 
+            readBookButton.style.backgroundColor = 'blue';
+            readBookButton.textContent = "Read";
+        }
+        else {
+            readBookButton.style.backgroundColor = 'red';
+            readBookButton.textContent = "Yet to read";
+        }
+        
         // Create elements to display the book details
         const bookTitle = document.createElement('p');
         const bookAuthor = document.createElement('p');
