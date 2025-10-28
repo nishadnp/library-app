@@ -3,35 +3,40 @@
 const myLibrary = [{id: '0b875c72-b8dc-4bfc-852f-5c145ddd6919', 
     title: 'Atomic Habits', 
     author: 'James Clear', 
-    pages: '320'}, 
+    pages: '320', 
+    readStatus: true}, 
     {id: '9b4d4233-4654-45a7-8fc0-8a5eb982c455', 
     title: 'Harry Porter', 
     author: 'J.K. Rowling', 
-    pages: '4100'}, 
+    pages: '4100', 
+    readStatus: false}, 
     {id: '70989918-0747-482d-8502-7b7060de964c', 
     title: 'The Arabian Nights', 
     author: 'Various Authors', 
-    pages: '2700'},
+    pages: '2700', 
+    readStatus: true},
     {id: '78cd9366-43b5-4259-8931-d93bbac84884', 
     title: 'The Chronicles of Narnia', 
     author: 'C.S. Lewis', 
-    pages: '1625'}];
+    pages: '1625', 
+    readStatus: false}];
 
 // Constructor function to create a Book object
-function Book(id, title, author, pages) {
+function Book(id, title, author, pages, readStatus) {
     this.id = id;
     this.title = title;
     this.author = author;
     this.pages = pages;
+    this.readStatus = readStatus;
 }
 
 // Function to add the book to the library
-function addBookToLibrary(title, author, pages) {   
+function addBookToLibrary(title, author, pages, readStatus) {   
 
     // Generate a unique ID for the new book (used for tracking/removal)
     const id = crypto.randomUUID();
 
-    myLibrary.push(new Book(id, title, author, pages)); 
+    myLibrary.push(new Book(id, title, author, pages, readStatus)); 
 }
 
 // Function to render all the books in library on the page
@@ -102,7 +107,9 @@ function removeBook(uniqueID) {
     } 
 }
 
+// Select the `New Book` button
 const newBookButton = document.getElementById('new-book-btn');
+// Select the dialog element
 const dialog = document.querySelector('dialog');
 
 // Show the dialog when the 'New Book' button is clicked
@@ -129,9 +136,10 @@ dialog.addEventListener('click', e => {
         const bookTitle = document.getElementById('book-title').value;
         const bookAuthor = document.getElementById('book-author').value;
         const bookPages = document.getElementById('book-total-pages').value;
+        const bookReadStatus = document.getElementById('book-read-status').checked;
 
         // Add new book to the library
-        addBookToLibrary(bookTitle, bookAuthor, bookPages);
+        addBookToLibrary(bookTitle, bookAuthor, bookPages, bookReadStatus);
 
         // Reset form fields and close the dialog after adding the book
         bookForm.reset();
