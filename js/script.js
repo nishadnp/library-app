@@ -62,12 +62,12 @@ function renderLibrary() {
         
         // Change the read button color according to book read status
         if (book.readStatus) { 
-            readBookButton.style.backgroundColor = '#007bff';
-            readBookButton.textContent = "Read";
+            theBook.style.borderLeft = '10px solid #2e8b57';
+            readBookButton.textContent = "Mark as Unead";
         }
         else {
-            readBookButton.style.backgroundColor = '#d9534f';
-            readBookButton.textContent = "Unread";
+            theBook.style.borderLeft = '10px solid #d9534f';
+            readBookButton.textContent = "Mark as Read";
         }
         
         // Create elements to display the book details

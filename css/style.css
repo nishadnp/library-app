@@ -160,7 +160,7 @@ main {
     justify-items: center;
 }
 
-article {
+.the-book {
     background: linear-gradient(45deg, #f0ffff, #4682b4);
     border-radius: 10px;
     border-right: #dcdcdc solid 10px;
@@ -173,7 +173,7 @@ article {
     justify-content: space-around;
 }
 
-article p {
+.the-book p {
     font-size: 1.1rem;
 }
 
@@ -203,7 +203,7 @@ article p {
 
 }
 
-article:hover {
+.the-book:hover {
     transform: scale(1.1);
 }
 
