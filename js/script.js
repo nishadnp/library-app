@@ -44,6 +44,7 @@ function renderLibrary() {
 
         // Create a container element for the book
         const theBook = document.createElement('article');
+        theBook.classList.add('the-book');
 
         // Set data-id as unique ID of the book
         theBook.dataset.id = book.id;
@@ -101,10 +102,9 @@ function removeBook(uniqueID) {
     // Find the index of the book that matches given unique ID
     const bookIndex = myLibrary.findIndex(book => book.id === uniqueID);
 
-    // If found, remove the book and render the newly updated library
+    // If found, remove the book from the library
     if (bookIndex !== -1) {
         myLibrary.splice(bookIndex, 1);
-        renderLibrary();
     } 
 }
 
@@ -114,10 +114,9 @@ function toggleReadStatus(uniqueID) {
     // Find the book by matching it's unique ID
     const book = myLibrary.find(book => book.id === uniqueID);
 
-    // Toggle and re-render the library
+    // Toggle the read status
     if(book) {
         book.toggleRead();
-        renderLibrary();
     }
 }
 
@@ -172,22 +171,24 @@ dialog.addEventListener('click', e => {
 });
 
 // Use event delegation to handle clicks on dynamically created "Remove" buttons
-document.body.addEventListener('click', e => {
+const bookSection = document.getElementById('main');
+bookSection.addEventListener('click', e => {
+    // Get the book's unique ID from its parent element
+    const bookId = e.target.parentElement.dataset.id;
+
     // Check if the clicked button is remove button of a book
     if (e.target.classList.contains('remove-book-btn')) {
-        // Get the book's unique ID from its parent element
-        const bookId = e.target.parentElement.dataset.id;
         // Remove the corresponding book from the library
         removeBook(bookId);
     }
 
     // Check if the clicked button is read button of a book
     if (e.target.classList.contains('read-book-btn')) {
-        // Get the book's unique ID from its parent element
-        const bookId = e.target.parentElement.dataset.id;
         // Call the function to toggle read status of the book
         toggleReadStatus(bookId);
     }
+
+    renderLibrary();
 });
 
 // Initial render of library on page load
