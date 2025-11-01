@@ -30,6 +30,10 @@ function Book(id, title, author, pages, readStatus) {
     this.readStatus = readStatus;
 }
 
+Book.prototype.toggleRead = function() {
+    this.readStatus = !this.readStatus;
+};
+
 // Function to add the book to the library
 function addBookToLibrary(title, author, pages, readStatus) {   
 
@@ -69,12 +73,12 @@ function renderLibrary() {
         
         // Change the read button color according to book read status
         if (book.readStatus) { 
-            readBookButton.style.backgroundColor = 'blue';
+            readBookButton.style.backgroundColor = '#007bff';
             readBookButton.textContent = "Read";
         }
         else {
-            readBookButton.style.backgroundColor = 'red';
-            readBookButton.textContent = "Yet to read";
+            readBookButton.style.backgroundColor = '#d9534f';
+            readBookButton.textContent = "Unread";
         }
         
         // Create elements to display the book details
@@ -114,6 +118,19 @@ function removeBook(uniqueID) {
         myLibrary.splice(bookIndex, 1);
         renderLibrary();
     } 
+}
+
+// Function to toggle the read status of the book
+function toggleReadStatus(uniqueID) {
+
+    // Find the book by matching it's unique ID
+    const book = myLibrary.find(book => book.id === uniqueID);
+
+    // Toggle and re-render the library
+    if(book) {
+        book.toggleRead();
+        renderLibrary();
+    }
 }
 
 // Select the `New Book` button
@@ -168,12 +185,20 @@ dialog.addEventListener('click', e => {
 
 // Use event delegation to handle clicks on dynamically created "Remove" buttons
 document.body.addEventListener('click', e => {
-    // Check if the clicked button is a remove button
+    // Check if the clicked button is remove button of a book
     if (e.target.classList.contains('remove-book-btn')) {
         // Get the book's unique ID from its parent element
         const bookId = e.target.parentElement.dataset.id;
         // Remove the corresponding book from the library
         removeBook(bookId);
+    }
+
+    // Check if the clicked button is read button of a book
+    if (e.target.classList.contains('read-book-btn')) {
+        // Get the book's unique ID from its parent element
+        const bookId = e.target.parentElement.dataset.id;
+        // Call the function to toggle read status of the book
+        toggleReadStatus(bookId);
     }
 });
 
