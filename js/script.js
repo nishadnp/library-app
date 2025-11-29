@@ -1,26 +1,26 @@
+// Class to create a Book object
+class Book {
+    constructor(id, title, author, pages, readStatus) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.readStatus = readStatus;
+    }
 
-// Array to store all book objects in the library (includes sample books)
-const myLibrary = [new Book('0b875c72-b8dc-4bfc-852f-5c145ddd6919', 'Atomic Habits', 
-    'James Clear', '320', true), 
-    new Book('9b4d4233-4654-45a7-8fc0-8a5eb982c455', 'Harry Porter', 
-    'J.K. Rowling', '4100', false), 
-    new Book('70989918-0747-482d-8502-7b7060de964c', 'The Arabian Nights', 
-    'Various Authors', '2700', true),
-    new Book('78cd9366-43b5-4259-8931-d93bbac84884', 'The Chronicles of Narnia', 
-    'C.S. Lewis', '1625', false)];
-
-// Constructor function to create a Book object
-function Book(id, title, author, pages, readStatus) {
-    this.id = id;
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.readStatus = readStatus;
+    // Method to toggle the read status of the book
+    toggleRead() {
+        this.readStatus = !this.readStatus;
+    }
 }
 
-Book.prototype.toggleRead = function() {
-    this.readStatus = !this.readStatus;
-};
+// Array to store all book objects in the library (includes sample books)
+const myLibrary = [
+    new Book('0b875c72-b8dc-4bfc-852f-5c145ddd6919', 'Atomic Habits', 'James Clear', '320', true), 
+    new Book('9b4d4233-4654-45a7-8fc0-8a5eb982c455', 'Harry Porter', 'J.K. Rowling', '4100', false), 
+    new Book('70989918-0747-482d-8502-7b7060de964c', 'The Arabian Nights', 'Various Authors', '2700', true),
+    new Book('78cd9366-43b5-4259-8931-d93bbac84884', 'The Chronicles of Narnia', 'C.S. Lewis', '1625', false)
+];
 
 // Function to add the book to the library
 function addBookToLibrary(title, author, pages, readStatus) {   
@@ -63,7 +63,7 @@ function renderLibrary() {
         // Change the read button color according to book read status
         if (book.readStatus) { 
             theBook.style.borderLeft = '10px solid #2e8b57';
-            readBookButton.textContent = "Mark as Unead";
+            readBookButton.textContent = "Mark as Unread";
         }
         else {
             theBook.style.borderLeft = '10px solid #d9534f';
